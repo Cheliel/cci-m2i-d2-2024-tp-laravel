@@ -11,55 +11,57 @@ include_once 'vendor/autoload.php';
 
 class AssocierControlleurs extends  Controller {
 
-    function index() {
+    function index() 
+    {
         $new = (new AssocierControllers);
         echo $new->rendu('index');
     }
 
-    function create() {
+    function create() 
+    {
         $new = (new AssocierControllers);
         echo $new->rendu('associer.create');
-        }
+    }
 
-    function store(Request $request) {
+    function store(Request $request) 
+    {
 
 
         $request->validate([
-            'Name' => 'required|min:1|max:20',
+            'name' => 'required|min:1|max:20',
             'email' => 'required|email',
             'phone_number' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10',
-
         ]);
 
 
         $member = new Member();
-        \DB::table('users')->insert(
-            ['name' => $_POST['name'], 'email' => $_POST['email'], 'password' => $_POST['password']]
-        );
-        }
-
-    function show() {
-    $id = $_GET['id'];
-    $asso = \DB::table('users')->whereRaw('id = '.$id)->get();
-    $this->rendu($asso->first());
+        $member->name = $request->name;
+        $member->email = $request->email;
+        $member->phone_number = $request->phone_number;
+        $member->save();
+        to_route('homePage');
     }
 
-    function destroy() {
-            $id = $_GET['id'];
-            $r = \DB::table('users')->whereRaw('id = '.$id)->delete($id);
-            if ($r) {
-                $this->index();
-            } else {
-                echo 'Erreur';
-            }
+    function show(Request $request) {
+    $member = Member::Where('id', '=', $request->id)->first();
 
-        }
+    $this->rendu($member);
+    }
 
-    function rendu($vueName = '') {
+    function destroy(Request $request) 
+    {
+
+        Member::destroy($request->id);
+        to_route('homePage');
+    }
+
+    function rendu($vueName = '') 
+    {
         echo view('associer.'.$vueName);
-        }
+    }
 
-    function test($var) {
+    function test($var) 
+    {
         // var_dump(
         // $var);
     }

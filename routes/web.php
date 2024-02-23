@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AssocierControlleurs;
 use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -16,10 +17,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [WelcomeController::class, 'index'])->name('homePage');
 
+Route::post('/assosier-detruite/{id}', [AssocierControlleurs::class, 'destroy'])->name('destroyMember');
 
-Route::get('/assosier', function () {
-    echo (new \App\Http\Controllers\AssocierControlleurs)->index();
-});
+
+
+Route::get('/assosier',[AssocierControlleurs::class, 'index'])->name('listMembers');
 
 
 Route::get('/assosier-creer', function () {
@@ -37,6 +39,3 @@ Route::get('/assosier-show', function () {
 });
 
 
-Route::get('/assosier-detruite', function () {
-    echo (new \App\Http\Controllers\AssocierControlleurs)->delete();
-});
