@@ -20,15 +20,23 @@ Route::get('/', [WelcomeController::class, 'index'])->name('homePage');
 Route::get('/assosier', function () {
     echo (new \App\Http\Controllers\AssocierControlleurs)->index();
 });
+
+
 Route::get('/assosier-creer', function () {
     echo (new \App\Http\Controllers\AssocierControlleurs)->create();
 });
+
+
 Route::post('/assosier-creer-2', function () {
     echo (new \App\Http\Controllers\AssocierControlleurs)->store();
 });
+
+
 Route::get('/assosier-show', function () {
     echo (new \App\Http\Controllers\AssocierControlleurs)->show();
 });
+
+
 Route::get('/assosier-detruite', function () {
     echo (new \App\Http\Controllers\AssocierControlleurs)->delete();
 });
