@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,9 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    echo (new \App\Http\Controllers\Controller())->index();
-});
+Route::get('/', [WelcomeController::class, 'index'])->name('homePage');
+
+
 Route::get('/assosier', function () {
     echo (new \App\Http\Controllers\AssocierControlleurs)->index();
 });

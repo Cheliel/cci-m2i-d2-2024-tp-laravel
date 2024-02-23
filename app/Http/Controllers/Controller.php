@@ -12,6 +12,8 @@ class Controller extends BaseController
 
     // This is only default controller
     function index() {
+
+        var_dump("hallo");
         $new = (new Controller);
         $titre = 'Accueil';
         $menu = [
@@ -27,6 +29,6 @@ class Controller extends BaseController
                 'name' => 'Contact'
             ]
         ];
-        require __DIR__."/templates/index.php";
+       // require __DIR__."/templates/index.php";
     }
 }
