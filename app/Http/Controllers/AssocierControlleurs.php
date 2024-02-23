@@ -1,8 +1,11 @@
 <?php
 
-namespace App\Http\Contrôleurs;
+namespace App\Http\Controllers;
 
-use Symfony\Component\HttpKernel\Controller\ControllerResolver as Controller;
+use Database\Factories\Member;
+use DragonCode\Contracts\Cashier\Http\Request;
+use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Validator;
 
 include_once 'vendor/autoload.php';
 
@@ -18,7 +21,18 @@ class AssocierControlleurs extends  Controller {
         echo $new->rendu('associer.create');
         }
 
-    function store() {
+    function store(Request $request) {
+
+
+        $request->validate([
+            'Name' => 'required|min:1|max:20',
+            'email' => 'required|email',
+            'phone_number' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10',
+
+        ]);
+
+
+        $member = new Member();
         \DB::table('users')->insert(
             ['name' => $_POST['name'], 'email' => $_POST['email'], 'password' => $_POST['password']]
         );
