@@ -5,24 +5,53 @@
 
 
 ### EN - Pepina App
+
+
 - I tried to help an association create a website to list their people, but I didn't finish and I didn't understand Laravel. I gave up because they don't want to pay me.
-- 
+
 - Use only templates folder for view because it's a simple app and symfony is too much for this. Changes config/view have been made to use only templates folder.
+
+
 - Use only one controller for all the routes because it's a simple app !
+
+
 - Use admin-door for the admin part. Find this in public.
+
+
 - Have a removed unknown files from the project.
+
+
 - Use directly the .env file from git because the app use only one environment. Have removed the .env.example file (not necessary).
+
+
 - Have removed unknown files from public folder because it's not necessary.
+
+
 - Have removed unknown line in .gitignore
+
 - Have updated the user schema
+
+
 - Have added a good user seed
+
+
 - I have not change config files but I have update the environnement variable with necessary only
+
+
 - I have placed the JS and CSS files in the public folder. I do not understand why they are not there by default. I have put each resource in the right place.
+
+
 - The admin page is not finished
+
+
 - I did not understand Middleware/, Console/, Exceptions/ or Storage/, so I did not touch it. Except for a file with 'verify' in the name, I think it serves to protect something. 
+
+
 - I deleted a key from the env variables for the database but I don't remember which one.
+
 - I had misunderstood, but the guy from the association wanted to create and delete 'members', but I confused it with linking, and I used users sometimes, so I did not create a migration for them.
--
+
+
 
 
 ### FR - Pepina App

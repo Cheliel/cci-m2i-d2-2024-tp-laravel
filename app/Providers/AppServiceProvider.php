@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Database\Console\DumpCommand;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -21,7 +22,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $var = (new Controller())->test();
-        dump($var);
+        var_dump($var);
         $var = new RouteServiceProvider();
         $var->get('/');
         dd('test this');
